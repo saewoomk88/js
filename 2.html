@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<head>
+
+  <script type="text/javascript">
+    function calc() {
+      var x = document.getElementById("x").value;
+      var y = document.getElementById("y").value;
+      var sum;
+      sum = parseInt(x) + parseInt(y);
+      document.getElementById("sum").value = sum;
+    }
+
+    function test() {
+      var e = document.getElementById("test");
+      e.style.color = "red";
+    }
+
+    function load() {
+      alert('왓냐?');
+    }
+
+    function onMouseDown(self) {
+      self.style.color = 'blue';
+    }
+
+    function onMouseUp(self) {
+      self.style.color = 'red';
+    }
+  </script>
+
+</head>
+
+<body onload="load()">
+  <form name="myform" action="..." method="post">
+    <input type="text" id="x"><br>
+    <input type="text" id="y"><br>
+    <input type="text" id="sum"><br>
+    <button type="button" onclick="calc()">계산</button>
+  </form>
+
+  <h1 id="test">TEST</h1>
+  <button type="button" onclick="test()" onmouseup="onMouseUp(this)" onmousedown="onMouseDown(this)">클릭</button>
+
+  <h2>숫자게임</h2>
+  <p>이 게임은 컴퓨터가 생성한 숫자를 맞추는 게임.</p>
+  <form>
+    숫자 :
+    <input type="text" id="num">
+
+    <input type="button" value="클릭" onclick="guess()"><br>
+
+    <p id="guesses"></p>
+    <p id="hint"></p>
+  </form>
+  <script type="text/javascript">
+    var comNum = 44;
+    var nGuesses = 0;
+
+
+    function guess() {
+      try {
+        var hint;
+        var number = document.getElementById("num").value;
+        nGuesses++;
+        if (number == '') throw '입력 없음';
+        if (isNaN(number)) throw '숫자가 아님';
+        if (number > comNum) throw '큼';
+        if (number < comNum) throw '너무 작음';
+        if (number == comNum) throw '성공';
+      } catch (e) {
+        document.getElementById('hint').innerHTML = '힌트 : ' + e;
+      }
+      document.getElementById("guesses").innerHTML = '추측횟수 : ' + nGuesses;
+
+
+    }
+
+    var car = {
+      make: "bnw",
+      model: "x5",
+      year: 2013
+    };
+    var txt = "";
+    for (var x in car) {
+      txt += car[x] + " ";
+    }
+
+    document.write(txt);
+  </script>
+
+  <form name="my">
+    필드1 <input type="text" name="a0">
+    필드2 <input type="text" name="a1">
+    필드3 <input type="text" name="a2">
+  </form>
+  <input type="button" onclick="inti()" value="dddfas">
+
+  <script type="text/javascript">
+    function inti() {
+      var age = prompt("dfsdfsdfsdf", "ddddddddddddddddd");
+      document.my["a0"].value = age;
+
+    }
+  </script>
+  <br>
+  <input type="button" value="night" onclick="night()">
+  <input type="button" value="day" onclick="day()"><br>
+
+  <script type="text/javascript">
+    function night() {
+      document.querySelector('body').style.backgroundColor = 'black';
+      document.querySelector('body').style.color = 'white';
+    }
+
+    function day() {
+      document.querySelector('body').style.backgroundColor = 'white';
+      document.querySelector('body').style.color = 'black';
+    }
+  </script>
+
+
+  <input type="button" value="night" onclick="toggle(this)">
+  <script>
+    var target = document.querySelector('body');
+    //var toggle1 = document.querySelector('#toggle');
+    var List = {
+      setColor: function(color) {
+        var aList = document.querySelectorAll('a');
+        for (var i = 0; i < aList.length; i++) {
+          aList[i].style.color = color;
+        }
+      }
+    }
+
+    function Body() {}
+
+    Body.prototype.setColor = function(color) {
+      target.style.color = color;
+    }
+    Body.prototype.setBackgroundColor = function(color) {
+      target.style.backgroundColor = color;
+    }
+
+
+    function toggle(self) {
+      var Body1 = new Body();
+
+      //  var List1 = new List();
+      if (self.value === 'night') {
+        Body1.setBackgroundColor('black');
+        Body1.setColor('white');
+        self.value = 'day';
+        List.setColor('red');
+
+      } else {
+        Body1.setBackgroundColor('white');
+        Body1.setColor('black');
+        self.value = 'night';
+        List.setColor('blue');
+      }
+
+    }
+  </script>
+  <a href="#">ddd</a>
+  <a href="#">ddd</a>
+  <a href="#">ddd</a>
+  <script type="text/javascript">
+    function check(a) {
+      var field = document.getElementById(a);
+      if (field.value.length == 0) {
+        alert('필드가 비어있네요');
+        field.focus();
+        return false;
+      }
+      return true;
+    }
+
+
+
+  </script>
+  <input type="text" id="user" value="">
+  <button type="button" name="button" onclick="check('user')">필드확인버튼</button>
+</body>
