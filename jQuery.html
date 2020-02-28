@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <title>jquery</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+  <ul id="demo">
+    <li class="active">HTML</li>
+    <li id="active">CSS</li>
+    <li class="active">JavaScript</li>
+  </ul>
+  <ul id="execute">
+    <pre>
+
+    $('css선택자').css('key값', 'value값')
+    $ -> jQuery function
+    css(); -> jQuery 객체의 메소드
+
+    <--js-->
+    var lis = document.getElementsByTagName('li');
+    for(var i=0; i>;lis.length; i++){
+    lis[i].style.color='red';
+    }
+
+    <--jQuery-->
+    $('li').css('color', 'red') -> 태그
+    $('.active').css('color', 'red') -> 클래스
+    $('#active').css('color', 'red') -> 아이디
+
+    var li = $('li');
+    var  li객체는 도움객체일 뿐, 제이쿼리 객체가 아니다.
+
+    <--jQurey-->
+    attr : attributes
+    prop : property  >> jQurey가 어느정도 보정을 해준다. (class / calssName)
+    2가지 방식 .. 둘의 차이를 명확히 알 필요가 있다.
+
+
+
+    </pre>
+    <script type="text/javascript">
+      var li = $('li');
+      li.map(function (a,b) {
+        console.log(a,b);
+        $(b).css('color','red');
+      })
+    </script>
+
+</body>
+
+</html>
