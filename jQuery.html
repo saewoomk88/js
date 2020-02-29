@@ -39,6 +39,42 @@
     prop : property  >> jQurey가 어느정도 보정을 해준다. (class / calssName)
     2가지 방식 .. 둘의 차이를 명확히 알 필요가 있다.
 
+    <--js-->
+    <--Event-->
+    이벤트 타겟 : 이벤트가 발생하는 대상 ex ) input 태그 , button 태그 등
+    이벤트 타입 : 이벤트가 발생하는 방법 ex ) onclick , onchange
+    핸들러 : 이벤트가 실행되는 코드
+
+    이벤트 설치방식.
+     1) inline : <input type="text" onclick="function()">
+     2) 프로퍼티리스너 :
+      var t = document.getElementById('#id');
+      t.onclick= function(event){
+        console.log(event);
+      }
+     3) addeventlistener
+      t.addeventlistener('click', function(event){
+        alert('Hello world, '+event.target.value);
+      });
+        1인자값엔 이벤트 2인자값엔 함수
+
+      <--onload 와 DOMContentLoaded-->
+        load는 모든 리소스들이 다운 될 때까지 지연된다 ex) 이미지파일
+        그래서 HTML 태그가 다 준비되면 실행되는 DOMContentLoaded을 사용해주는게 좋다
+
+      마우스 이벤트는 레퍼런스 참조하자.
+
+      <--jQurey-->
+      on API 사용법
+       :   on(events,[selector],[data],handler(eventObject))
+        selector : 필터링기능
+
+        $('#id').on('focus blur', function(e){
+          $('#dd').html(e.type);
+        })
+        : 다중 이벤트 등록 가능
+
+        이벤트 삭제는 .off(); 사용하면된.
 
 
     </pre>
