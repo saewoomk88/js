@@ -1,0 +1,92 @@
+  <!DOCTYPE html>
+  <html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+
+  <body>
+    <!-- JavaScript 방식 -->
+    <--Ajax-->
+      Asynchronous JavaScript and XML
+
+      XMLHttpRequest
+      : ajax 를 사용하기 위한 객체.
+
+      <p>time : <span id="time"></span></p>
+      <input type="button" id="execute" value="execute" />
+
+      <script>
+        $('#execute').click(function() {
+          $.ajax({
+            url: './time.php',
+            success: function(data) {
+              $('#time').append(data);
+            }
+          })
+        })
+        document.querySelector('input').addEventListener('click', function(event) {
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', './time.php');
+          //onreadystatechange : 상태의 변화가 있을 때마다 호출되는 프로퍼티.( 보통은 통신이 끝났을 때만 사용한다.)
+          xhr.onreadystatechange = function() {
+            //readyState: 현재 통신 상태를 알려줌 4 는 통신완료.
+            //  status: 통신의 결과..200 은 통신이 성공 했음을 의미.
+            if (xhr.readyState === 4 && xhr.status: === 200) {
+              //responseText: 서버에서 전송한 데이터를 담고있는 프로퍼티: 프로퍼티는 object를 위해서 데이터를 저장한다.
+              document.querySelector('#time').innerHTML = xhr.responseText;
+              //서버에서 가져온 정보를 innerHTML 넣는다(responseText)
+            }
+          }
+          xhr.send();
+        });
+      </script>
+
+      <p>time : <span id="time"></span></p>
+
+      <form>
+        <select name="timezone">
+          <option value="Asia/Seoul">asia/seoul</option>
+          <option value="America/New_York">America/New_York</option>
+        </select>
+        <select name="format">
+          <option value="Y-m-d H:i:s">Y-m-d H:i:s</option>
+          <option value="Y-m-d">Y-m-d</option>
+        </select>
+      </form>
+
+      <input type="button" id="execute" value="execute" />
+
+      <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+      <script>
+        $('#execute').click(function() {
+          $.ajax({
+            url: './time2.php',
+            type: 'post',
+            data: $('form').serialize(),
+            success: function(data) {
+              $('#time').text(data);
+            }
+          })
+        })
+      </script>
+
+      <--JSON-->
+        JavaScript에서 객체를 만들 때 사용하는 표현식을 의미.
+        http://www.json.org/json-ko.html
+        JSON.parse()
+        : 인자로 전달된 문사열을 자바스크립트의 데이터로 변환한다.
+        문자열>>>데이터
+        JSON.stringify()
+        : 인자로 전달된 자바스크립트의 데이터를 문자열로 변환한다.
+        데이터>>> 문자열
+
+
+
+
+
+
+  </body>
+
+  </html>
